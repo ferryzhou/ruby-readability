@@ -419,8 +419,8 @@ module Readability
       end
       
       if @options[:url]
-        node.css("img").each begin |img| 
-          img['src'] = URI.parse(url).merge(URI.parse(img['src'])).to_s
+        node.css("img").each do |img| 
+          img['src'] = URI.parse(@options[:url]).merge(URI.parse(img['src'])).to_s
         end
       end
 
