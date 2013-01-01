@@ -417,6 +417,12 @@ module Readability
         end
 
       end
+      
+      if @options[:url]
+        node.css("img").each begin |img| 
+          img['src'] = URI.parse(url).merge(URI.parse(img['src'])).to_s
+        end
+      end
 
       # Get rid of duplicate whitespace
       node.to_html.gsub(/[\r\n\f]+/, "\n" ).gsub(/[\t  ]+/, " ")
